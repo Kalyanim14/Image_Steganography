@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome | Image Steganography</title>
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="icon" type="image/png" href="../static/logo.png">
+    <title>Decrypt Message</title>
+
+    <!-- Flask static files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
 
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url("{{ url_for('static', filename='b2.jpeg') }}");
+            background-image: url("{{ url_for('static', filename='Decrypt.webp') }}");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -18,28 +20,32 @@
             padding: 0;
         }
     </style>
-    
 </head>
+
 <body>
-    <div class="container" style="text-align: center;">
-        <h1>🖼️ Welcome to Image Steganography</h1>
-        <p style="margin-top: 10px; font-size: 18px;">
-            Securely hide or reveal secret messages within images using password protection.
-        </p>
+    <div class="container">
+        <h1>🔓 Decrypt a Message from an Image</h1>
 
-        <div style="margin-top: 40px;">
-            <a href="/encrypt">
-                <button style="margin-bottom: 20px;">🔐 Encrypt Message</button>
-            </a>
-            <a href="/decrypt">
-                <button>🔓 Decrypt Message</button>
-            </a>
-        </div>
+        {% if result %}
+            <p class="success">
+                <strong>Decrypted Message:</strong> {{ result }}
+            </p>
+        {% endif %}
 
-        <footer style="margin-top: 60px; font-size: 14px; color: #ffffff;">
-            © 2025 Image Steganography App — Built by team - [Kalyani, Lalitha Shivapriya, Azra, Shiva, Ujwala, Nazeema]
-        </footer>
+        <form method="POST" enctype="multipart/form-data" class="form">
+            <label for="image">Select Encrypted Image:</label>
+            <input type="file" name="image" id="image" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <label for="image_id">Enter Image ID:</label>
+            <input type="text" name="image_id" id="image_id" required>
+
+            <button type="submit">Decrypt</button>
+        </form>
+
+        <a href="/" class="back-link">← Back to Home</a>
     </div>
-
 </body>
 </html>
