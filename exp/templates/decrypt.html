@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Decrypt Message</title>
+
+    <!-- Flask static files -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
 
     <style>
         body {
@@ -19,26 +21,27 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>🔓 Decrypt a Message from an Image</h1>
 
         {% if result %}
-            <p class="success"><strong>Decrypted Message:</strong> {{ result }}</p>
+            <p class="success">
+                <strong>Decrypted Message:</strong> {{ result }}
+            </p>
         {% endif %}
 
         <form method="POST" enctype="multipart/form-data" class="form">
-            <label>Select Encrypted Image:</label>
-            <input type="file" name="image" required><br>
+            <label for="image">Select Encrypted Image:</label>
+            <input type="file" name="image" id="image" required>
 
-            <label>Password:</label>
-            <input type="password" name="password" required><br>
-
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
 
             <label for="image_id">Enter Image ID:</label>
-        
-            <input type="text" name="image_id" required><br>
-            
+            <input type="text" name="image_id" id="image_id" required>
+
             <button type="submit">Decrypt</button>
         </form>
 
