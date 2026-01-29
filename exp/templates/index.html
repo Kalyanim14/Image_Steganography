@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Decrypt Message</title>
+    <title>Welcome | Image Steganography</title>
 
     <!-- Flask static files -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url("{{ url_for('static', filename='Decrypt.webp') }}");
+            background-image: url("{{ url_for('static', filename='b2.jpeg') }}");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -23,29 +23,27 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>🔓 Decrypt a Message from an Image</h1>
+    <div class="container" style="text-align: center;">
+        <h1>🖼️ Welcome to Image Steganography</h1>
 
-        {% if result %}
-            <p class="success">
-                <strong>Decrypted Message:</strong> {{ result }}
-            </p>
-        {% endif %}
+        <p style="margin-top: 10px; font-size: 18px;">
+            Securely hide or reveal secret messages within images using password protection.
+        </p>
 
-        <form method="POST" enctype="multipart/form-data" class="form">
-            <label for="image">Select Encrypted Image:</label>
-            <input type="file" name="image" id="image" required>
+        <div style="margin-top: 40px;">
+            <a href="/encrypt">
+                <button style="margin-bottom: 20px;">🔐 Encrypt Message</button>
+            </a>
+            <br>
+            <a href="/decrypt">
+                <button>🔓 Decrypt Message</button>
+            </a>
+        </div>
 
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
-
-            <label for="image_id">Enter Image ID:</label>
-            <input type="text" name="image_id" id="image_id" required>
-
-            <button type="submit">Decrypt</button>
-        </form>
-
-        <a href="/" class="back-link">← Back to Home</a>
+        <footer style="margin-top: 60px; font-size: 14px; color: #ffffff;">
+            © 2025 Image Steganography App — Built by team
+            [Kalyani, Lalitha Shivapriya, Azra, Shiva, Ujwala, Nazeema]
+        </footer>
     </div>
 </body>
 </html>
